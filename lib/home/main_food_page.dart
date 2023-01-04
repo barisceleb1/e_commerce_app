@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/home/food_page_body.dart';
 import 'package:e_commerce_app/widgets/big_text.dart';
+import 'package:e_commerce_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 class MainFoodPage extends StatelessWidget {
@@ -19,7 +21,13 @@ class MainFoodPage extends StatelessWidget {
                   Column(
                     children: [
                       BigText(text:"Turkey", color:Colors.cyan),
-                      Text("City"),
+                      Row(
+                        children: [
+                          SmallText(text: "Ankara",),
+                          Icon(Icons.arrow_drop_down_rounded),
+                          
+                        ],
+                      ),
 
                     ],
                   ),
@@ -39,6 +47,7 @@ class MainFoodPage extends StatelessWidget {
             ),
 
           ),
+          FoodPageBody(),
         ],
       ),
     );

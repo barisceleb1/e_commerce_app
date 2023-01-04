@@ -1,15 +1,13 @@
 
-
-import 'package:e_commerce_app/const/color.dart';
 import 'package:flutter/material.dart';
 
-class BigText extends StatelessWidget {
-  TextOverflow overFlow;
+class SmallText extends StatelessWidget {
+
   final Color? color;
   final String text;
   double size;
-
- BigText({Key? key, this.color= const Color(0x8A000000), required this.text, this.overFlow= TextOverflow.ellipsis , this.size=20}) : super(key: key);
+  double height;
+  SmallText({Key? key, this.color=const Color(0x73000000), required this.text,this.size=12, this.height=1.2}) : super(key: key);
 
 
 
@@ -17,7 +15,6 @@ class BigText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      overflow: overFlow,
       style: TextStyle(
         color:color,
         fontWeight: FontWeight.w400,
