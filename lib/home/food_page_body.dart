@@ -1,5 +1,7 @@
 import 'package:e_commerce_app/const/color.dart';
 import 'package:e_commerce_app/widgets/big_text.dart';
+import 'package:e_commerce_app/widgets/icon_and_text_widget.dart';
+import 'package:e_commerce_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 class FoodPageBody extends StatelessWidget {
@@ -25,7 +27,7 @@ PageController pageController =PageController(viewportFraction: 0.90);
     return Stack(
       children:[Container(
         height: 220,
-        margin: EdgeInsets.only(left: 5, right: 5),
+        margin: EdgeInsets.only(left: 10, right: 10),
         decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage("assets/hamburger.png"),
               fit: BoxFit.cover),
@@ -37,7 +39,7 @@ PageController pageController =PageController(viewportFraction: 0.90);
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: 140,
+            height: 120,
             margin: EdgeInsets.only(left: 40, right: 40, bottom: 15),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
@@ -56,7 +58,27 @@ PageController pageController =PageController(viewportFraction: 0.90);
                         children: 
                           List.generate(5, (index) => Icon(Icons.star, color: AppColors.mainColor,size: 15,))
                         
-                      )
+                      ),
+                      SizedBox(width: 10,),
+                      SmallText(text: "4.5"),
+                      SizedBox(width: 10,),
+                      SmallText(text: "1287"),
+                      SizedBox(width: 10,),
+                      SmallText(text: "Comments"),
+
+
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                  Row(
+                    children: [
+                      IconAndTextWidget(icon: Icons.circle_sharp, text: "Normal" , iconColor: AppColors.iconColor),
+                      SizedBox(width: 10,),
+                      IconAndTextWidget(icon: Icons.location_on, text: "1.5km" , iconColor: AppColors.mainColor),
+                      SizedBox(width: 10,),
+                      IconAndTextWidget(icon: Icons.access_time_rounded, text: "36min" , iconColor: AppColors.textColor),
+
+
 
                     ],
                   )
