@@ -39,7 +39,9 @@ void dispose(){
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [Container(
+      children: [
+        //slider section
+        Container(
       height: Dimensions.pageView,
       // color: Colors.orange,
 
@@ -51,6 +53,7 @@ void dispose(){
 
       ),
     ),
+        //dots
     new DotsIndicator(
     dotsCount: 5,
     position: _currPageValue,
@@ -60,7 +63,10 @@ void dispose(){
     activeSize: const Size(18.0, 9.0),
     activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radius5)),
     ),
-    )],
+    ),
+      //Popular text],
+    SizedBox(height: Dimensions.height30,),
+  ],
     );
   }
 
