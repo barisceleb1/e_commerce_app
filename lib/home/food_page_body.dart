@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_commerce_app/const/color.dart';
+import 'package:e_commerce_app/const/dimensions.dart';
 import 'package:e_commerce_app/widgets/big_text.dart';
 import 'package:e_commerce_app/widgets/icon_and_text_widget.dart';
 import 'package:e_commerce_app/widgets/small_text.dart';
@@ -17,7 +18,7 @@ PageController pageController =PageController(viewportFraction: 0.90);
 
 var _currPageValue=0.0;
 double _scaleFactor= 0.8;
-double _height= 220;
+double _height= Dimensions.pageViewContainer;
 
 @override
 void initState(){
@@ -39,7 +40,7 @@ void dispose(){
   Widget build(BuildContext context) {
     return Column(
       children: [Container(
-      height: 320,
+      height: Dimensions.pageView,
       // color: Colors.orange,
 
       child: PageView.builder(itemCount: 5,
@@ -57,7 +58,7 @@ void dispose(){
       activeColor: AppColors.mainColor,
     size: const Size.square(9.0),
     activeSize: const Size(18.0, 9.0),
-    activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+    activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radius5)),
     ),
     )],
     );
@@ -90,23 +91,23 @@ void dispose(){
     transform: matrix,
     child: Stack(
         children:[Container(
-          height: 220,
-          margin: EdgeInsets.only(left: 10, right: 10),
+          height: Dimensions.pageViewContainer,
+          margin: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
           decoration: BoxDecoration(
             image: DecorationImage(image: AssetImage("assets/hamburger.png"),
                 fit: BoxFit.cover),
 
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(Dimensions.radius30),
            // color: index.isEven?Color(0xFF00BCD4):Colors.orange,
           ),
         ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 120,
-              margin: EdgeInsets.only(left: 40, right: 40, bottom: 15),
+              height: Dimensions.pageViewTextContainer,
+              margin: EdgeInsets.only(left: Dimensions.width40, right: Dimensions.width40, bottom: Dimensions.height15,),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
       color: Colors.white,
                  boxShadow:[ BoxShadow(
                    blurRadius: 5.0,
@@ -115,30 +116,30 @@ void dispose(){
                  )]
             ),
               child: Container(
-                padding: EdgeInsets.only(top: 10, left: 15, right: 15),
+                padding: EdgeInsets.only(top: Dimensions.height10, left: Dimensions.width15, right: Dimensions.width15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     BigText(text: "Chinese Side",),
-                    SizedBox(height: 10,),
+                    SizedBox(height: Dimensions.height10,),
                     Row(
                       children: [
                         Wrap(
                           children:
-                            List.generate(5, (index) => Icon(Icons.star, color: AppColors.mainColor,size: 15,))
+                            List.generate(5, (index) => Icon(Icons.star, color: AppColors.mainColor,size: Dimensions.iconSize15,))
 
                         ),
-                        SizedBox(width: 10,),
+                        SizedBox(width: Dimensions.width10,),
                         SmallText(text: "4.5"),
-                        SizedBox(width: 10,),
+                        SizedBox(width: Dimensions.width10,),
                         SmallText(text: "1287"),
-                        SizedBox(width: 10,),
+                        SizedBox(width: Dimensions.width10,),
                         SmallText(text: "Comments"),
 
 
                       ],
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(height: Dimensions.height20,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

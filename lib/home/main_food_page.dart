@@ -8,6 +8,7 @@ class MainFoodPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Şu an ki telefon boyutu:"+MediaQuery.of(context).size.width.toString());
     return Scaffold(
       body: Column(
         children: [
@@ -23,6 +24,7 @@ class MainFoodPage extends StatelessWidget {
                       BigText(text:"Turkey", color:Colors.cyan),
                       Row(
                         children: [
+                         SizedBox(width: 20),
                           SmallText(text: "Ankara",),
                           Icon(Icons.arrow_drop_down_rounded),
                           
