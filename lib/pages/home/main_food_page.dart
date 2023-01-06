@@ -1,4 +1,5 @@
-import 'package:e_commerce_app/home/food_page_body.dart';
+
+import 'package:e_commerce_app/pages/home/food_page_body.dart';
 import 'package:e_commerce_app/widgets/big_text.dart';
 import 'package:e_commerce_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ class MainFoodPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Şu an ki telefon boyutu:"+MediaQuery.of(context).size.width.toString());
+    print("Şu an ki telefon boyutu:"+MediaQuery.of(context).size.height.toString());
     return Scaffold(
       body: Column(
         children: [
