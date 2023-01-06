@@ -13,7 +13,9 @@ class MainFoodPage extends StatelessWidget {
       body: Column(
         children: [
           Container(
+            color: Colors.blue,
             child: Container(
+              color: Colors.pink,
               margin: EdgeInsets.only(top: 45, bottom: 15),
               padding: EdgeInsets.only(left: 20, right: 20),
               child: Row(
@@ -27,7 +29,7 @@ class MainFoodPage extends StatelessWidget {
                          SizedBox(width: 20),
                           SmallText(text: "Ankara",),
                           Icon(Icons.arrow_drop_down_rounded),
-                          
+
                         ],
                       ),
 
@@ -49,7 +51,9 @@ class MainFoodPage extends StatelessWidget {
             ),
 
           ),
-          FoodPageBody(),
+          Expanded(child:SingleChildScrollView(
+child: FoodPageBody(),
+          ) ),
         ],
       ),
     );

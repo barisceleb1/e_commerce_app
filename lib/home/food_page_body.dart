@@ -42,6 +42,7 @@ void dispose(){
       children: [
         //slider section
         Container(
+          color: Colors.green,
       height: Dimensions.pageView,
       // color: Colors.orange,
 
@@ -64,8 +65,67 @@ void dispose(){
     activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radius5)),
     ),
     ),
-      //Popular text],
+      //Popular text,
     SizedBox(height: Dimensions.height30,),
+        Container(
+          color: Colors.yellow,
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Container(child: BigText(text: "Populer")),
+              SizedBox(width: Dimensions.width10,),
+              Container(
+
+                child: BigText(text: ".",color: Colors.black26,),
+              ),
+              SizedBox(
+                width: Dimensions.width10,
+              ),
+              Container(
+
+                child: SmallText(text: "Food pairing"),
+              ),
+              // list of food and images
+            ],
+
+          ),
+        ),
+        //list of food and images
+        Container(
+          color: Colors.black,
+          height: 900,
+          child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: 10,
+              itemBuilder: (context, index){
+                return Container(
+                  color: Colors.orange,
+                  margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20, bottom: Dimensions.height10),
+                  child: Row(
+                    children: [
+                      //image section
+                      Container(
+
+                        height: 120,
+                        width: 120,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(Dimensions.radius20),
+                            color: Colors.white,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/hamburger.png"),
+                            )
+                        ),
+                      ),
+                      // text container
+
+                    ],
+                  ),
+                );
+
+              }),
+        )
   ],
     );
   }
