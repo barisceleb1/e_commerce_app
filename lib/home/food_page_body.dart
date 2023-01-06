@@ -119,6 +119,30 @@ void dispose(){
                         ),
                       ),
                       // text container
+                      Expanded(
+                        child: Container(
+                          height: 100,
+
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(Dimensions.radius20),
+                              bottomRight: Radius.circular(Dimensions.radius20),
+                            ),
+                            color: Colors.white,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(left:Dimensions.width10, right: Dimensions.width10),
+                            child: Column(
+                              children: [
+                                BigText(text: "Medium boiled meat dish"),
+                                SizedBox(height: Dimensions.height10,),
+                                SmallText(text: "A type of food unique to Turkey"),
+                                SizedBox(height: Dimensions.height10,),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
 
                     ],
                   ),
