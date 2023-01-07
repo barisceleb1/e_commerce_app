@@ -17,6 +17,7 @@ class PopulerFoodDetail extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          //background image
           Positioned(
             left: 0,
               right: 0,
@@ -30,6 +31,7 @@ class PopulerFoodDetail extends StatelessWidget {
               ),
             ),
           ),
+          //icon widgets
           Positioned(
             top: Dimensions.height30,
               left :Dimensions.width15,
@@ -49,6 +51,7 @@ class PopulerFoodDetail extends StatelessWidget {
 
 
           )),
+          //introduction of food
           Positioned(
               left:0,
               right:0,
@@ -81,13 +84,14 @@ decoration: BoxDecoration(
 
 
           )),
+          //expandable text widget
         ],
       ),
       bottomNavigationBar: Container(
-        height: 120,
+        height: Dimensions.bottomHeightBar,
         padding: EdgeInsets.only(top: Dimensions.height30, bottom: Dimensions.height20, right: Dimensions.height20),
         decoration: BoxDecoration(
-          color: Colors.orange,
+          color: Colors.grey.shade200,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(Dimensions.radius20*2),
             topRight: Radius.circular(Dimensions.radius20*2),
@@ -120,7 +124,7 @@ decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color:AppColors.mainColor,
               ),
-              child: BigText(text: "0.8+ Add to Card"),
+              child: BigText(text: "8\$ Add to Card"),
             )
 
 
