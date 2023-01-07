@@ -3,6 +3,7 @@ import 'package:e_commerce_app/const/dimensions.dart';
 import 'package:e_commerce_app/widgets/app_column.dart';
 import 'package:e_commerce_app/widgets/app_icon.dart';
 import 'package:e_commerce_app/widgets/big_text.dart';
+import 'package:e_commerce_app/widgets/expandable_text_widget.dart';
 import 'package:e_commerce_app/widgets/icon_and_text_widget.dart';
 import 'package:e_commerce_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,7 @@ class PopulerFoodDetail extends StatelessWidget {
               left:0,
               right:0,
               bottom: 0,
-              top:Dimensions.popularFoodImgSize-50,
+              top:Dimensions.popularFoodImgSize-Dimensions.popularFoodSize,
               child: Container(
                 padding: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, top: Dimensions.height20),
 decoration: BoxDecoration(
@@ -74,6 +75,7 @@ decoration: BoxDecoration(
                  AppColumn(text: 'Veal',),
                  SizedBox(height: Dimensions.height20,),
                  BigText(text: "Introduce"),
+                 ExpandableTextWidget(text: "These are short, famous texts in English from classic sources like the Bible or Shakespeare. Some texts have word definitions and explanations to help you. Some of these texts are written in an old style of English.")
 
                ],
              )
@@ -84,7 +86,7 @@ decoration: BoxDecoration(
 
 
           )),
-          //expandable text widget
+
         ],
       ),
       bottomNavigationBar: Container(
