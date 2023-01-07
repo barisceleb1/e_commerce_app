@@ -140,6 +140,7 @@ void dispose(){
                                 SizedBox(height: Dimensions.height10,),
                                 SmallText(text: "A type of food unique to Turkey"),
                                 SizedBox(height: Dimensions.height10,),
+
                               ],
                             ),
                           ),
