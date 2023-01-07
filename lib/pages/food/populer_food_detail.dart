@@ -6,6 +6,7 @@ import 'package:e_commerce_app/widgets/big_text.dart';
 import 'package:e_commerce_app/widgets/icon_and_text_widget.dart';
 import 'package:e_commerce_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PopulerFoodDetail extends StatelessWidget {
   const PopulerFoodDetail({Key? key}) : super(key: key);
@@ -64,19 +65,67 @@ decoration: BoxDecoration(
    )
 
 ),
-             child:AppColumn(text: 'Veal',)
+             child:Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               children: [
+                 AppColumn(text: 'Veal',),
+                 SizedBox(height: Dimensions.height20,),
+                 BigText(text: "Introduce"),
+
+               ],
+             )
 
 
 
 
 
 
-          ))
-
-
-
+          )),
         ],
+      ),
+      bottomNavigationBar: Container(
+        height: 120,
+        padding: EdgeInsets.only(top: Dimensions.height30, bottom: Dimensions.height20, right: Dimensions.height20),
+        decoration: BoxDecoration(
+          color: Colors.orange,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(Dimensions.radius20*2),
+            topRight: Radius.circular(Dimensions.radius20*2),
+          )
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: Dimensions.height20),
+              padding: EdgeInsets.all(Dimensions.height15),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
+                color:Colors.white,
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.remove, color: AppColors.signColor,),
+                  SizedBox(width: Dimensions.width10/2,),
+                  BigText(text: "0"),
+                  SizedBox(width: Dimensions.width10/2,),
+                  Icon(Icons.remove, color: AppColors.signColor,),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: Dimensions.height20),
+              padding: EdgeInsets.all(Dimensions.height15),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
+                color:AppColors.mainColor,
+              ),
+              child: BigText(text: "0.8+ Add to Card"),
+            )
 
+
+          ],
+        ),
       ),
 
     );
