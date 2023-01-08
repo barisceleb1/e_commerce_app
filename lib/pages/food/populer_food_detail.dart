@@ -75,7 +75,14 @@ decoration: BoxDecoration(
                  AppColumn(text: 'Veal',),
                  SizedBox(height: Dimensions.height20,),
                  BigText(text: "Introduce"),
-                 ExpandableTextWidget(text: "These are short, famous texts in English from classic sources like the Bible or Shakespeare. Some texts have word definitions and explanations to help you. Some of these texts are written in an old style of English.")
+                 SizedBox(height: Dimensions.height20,),
+                 Expanded(
+                   child: SingleChildScrollView(
+                     child: ExpandableTextWidget(text: "These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.",
+
+                          ),
+                   ),
+                 )
 
                ],
              )

@@ -26,7 +26,6 @@ class AppColumn extends StatelessWidget {
             ),
             SizedBox(width: Dimensions.width10,),
             SmallText(text: "4.5"),
-            SmallText(color: Colors.white, text: text, size: 12, height: 15),
             SizedBox(width: Dimensions.width10,),
             SmallText(text: "1287"),
             SizedBox(width: Dimensions.width10,),

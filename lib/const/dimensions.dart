@@ -65,4 +65,7 @@ static double popularFoodSize = screenHeight/9.76;
 static double bottomHeightBar = screenHeight/6.83;
 //screen height
 //static double screen_Height = screenHeight/4.55;
+
+//expandable widget
+static double expandablefont= screenHeight/402.01;
 }
