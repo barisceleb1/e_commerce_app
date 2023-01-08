@@ -80,7 +80,44 @@ class RecommenededFoodDetail extends StatelessWidget {
                 AppIcon(icon: Icons.add,backgroundColor: AppColors.mainColor,iconSize: Dimensions.iconSize20,),
               ],
             ),
-          )
+          ),
+          Container(
+            height: Dimensions.bottomHeightBar,
+            padding: EdgeInsets.only(top: Dimensions.height30, bottom: Dimensions.height20, right: Dimensions.height20),
+            decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(Dimensions.radius20*2),
+                  topRight: Radius.circular(Dimensions.radius20*2),
+                )
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: Dimensions.height20),
+                  padding: EdgeInsets.all(Dimensions.height15),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    color:Colors.white,
+                  ),
+                  child: Icon(Icons.favorite,
+                  color: AppColors.mainColor,)
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: Dimensions.height20),
+                  padding: EdgeInsets.all(Dimensions.height15),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    color:AppColors.mainColor,
+                  ),
+                  child: BigText(text: "8\$ Add to Card"),
+                )
+
+
+              ],
+            ),
+          ),
 
 
         ],
