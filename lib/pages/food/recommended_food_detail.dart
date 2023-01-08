@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/const/color.dart';
 import 'package:e_commerce_app/const/dimensions.dart';
 import 'package:e_commerce_app/widgets/app_icon.dart';
 import 'package:e_commerce_app/widgets/big_text.dart';
@@ -9,12 +10,13 @@ class RecommenededFoodDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Şu an ki telefon boyutu:"+MediaQuery.of(context).size.height.toString());
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            toolbarHeight: 70,
+            toolbarHeight: Dimensions.toolBarHeight,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -23,13 +25,14 @@ class RecommenededFoodDetail extends StatelessWidget {
               ],
             ),
             bottom: PreferredSize(
-      preferredSize: Size.fromHeight(20),
+      preferredSize: Size.fromHeight(Dimensions.height20),
 
               child: Container(
+               // margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20),
 
               child: Center(child: BigText(text:"Sliver",size: Dimensions.font30,)),
               width: double.maxFinite,
-                padding: EdgeInsets.only(top: 5, bottom:10),
+                padding: EdgeInsets.only(top: Dimensions.width5, bottom:Dimensions.width10),
                 decoration: BoxDecoration(borderRadius: BorderRadius.only(
                   topRight: Radius.circular(Dimensions.radius20),
                   topLeft:Radius.circular(Dimensions.radius20),
@@ -38,7 +41,7 @@ class RecommenededFoodDetail extends StatelessWidget {
             ),),
             pinned: true,
             backgroundColor: Colors.red.shade900,
-            expandedHeight: 300,
+            expandedHeight: Dimensions.expandedHeight,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset("assets/cooked_meat.png",
                 width: double.maxFinite,
@@ -58,6 +61,30 @@ class RecommenededFoodDetail extends StatelessWidget {
           )
 
         ],
+      ),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: EdgeInsets.only(
+              left: Dimensions.width50,
+              right: Dimensions.width50,
+              top: Dimensions.height10,
+              bottom: Dimensions.height10,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppIcon(icon: Icons.remove,backgroundColor: AppColors.mainColor,iconSize: Dimensions.iconSize20,),
+                BigText(text: "\$12.88 "+" X "+" 0 ", color: AppColors.signColor,size: Dimensions.font25,),
+                AppIcon(icon: Icons.add,backgroundColor: AppColors.mainColor,iconSize: Dimensions.iconSize20,),
+              ],
+            ),
+          )
+
+
+        ],
+
       ),
     );
   }

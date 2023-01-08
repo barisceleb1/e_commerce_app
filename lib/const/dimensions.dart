@@ -31,7 +31,9 @@ class Dimensions {
   static double width50 = screenHeight/13.66;
 //font
   static double font20 = screenHeight/34.17;
+  static double font25 = screenHeight/27.33;
   static double font30 = screenHeight/22.78;
+
  // radius
   static double radius5 = screenHeight/136.68;
   static double radius10 = screenHeight/68.34;
@@ -68,4 +70,8 @@ static double bottomHeightBar = screenHeight/6.83;
 
 //expandable widget
 static double expandablefont= screenHeight/402.01;
+//toolbar height
+static double toolBarHeight= screenHeight/9.76;
+//expanded height
+static double expandedHeight= screenHeight/2.27;
 }
