@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/const/color.dart';
-import 'package:e_commerce_app/const/dimensions.dart';
+import 'package:e_commerce_app/utils/color.dart';
+import 'package:e_commerce_app/utils/dimensions.dart';
 import 'package:e_commerce_app/widgets/big_text.dart';
 import 'package:e_commerce_app/widgets/icon_and_text_widget.dart';
 import 'package:e_commerce_app/widgets/small_text.dart';

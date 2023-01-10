@@ -1,6 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:e_commerce_app/const/color.dart';
-import 'package:e_commerce_app/const/dimensions.dart';
+import 'package:e_commerce_app/utils/color.dart';
+import 'package:e_commerce_app/utils/dimensions.dart';
 import 'package:e_commerce_app/widgets/app_column.dart';
 import 'package:e_commerce_app/widgets/big_text.dart';
 import 'package:e_commerce_app/widgets/icon_and_text_widget.dart';
