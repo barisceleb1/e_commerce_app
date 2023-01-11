@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/pages/home/main_food_page.dart';
 import 'package:e_commerce_app/utils/color.dart';
 import 'package:e_commerce_app/utils/dimensions.dart';
 import 'package:e_commerce_app/widgets/app_column.dart';
@@ -9,8 +10,8 @@ import 'package:e_commerce_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PopulerFoodDetail extends StatelessWidget {
-  const PopulerFoodDetail({Key? key}) : super(key: key);
+class PopularFoodDetail extends StatelessWidget {
+  const PopularFoodDetail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +41,14 @@ class PopulerFoodDetail extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                AppIcon(
-                  icon: Icons.arrow_back_ios,),
+                  GestureDetector(
+                    onTap: (){
+                      Get.to(()=>MainFoodPage());
+                    },
+                    child:AppIcon(
+                      icon: Icons.arrow_back_ios,),
+                  ),
+
                   AppIcon(
                     icon: Icons.shopping_cart_outlined,)
                 ],

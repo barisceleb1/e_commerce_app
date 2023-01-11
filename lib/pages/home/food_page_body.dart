@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_commerce_app/controllers/popular_product_controller.dart';
 import 'package:e_commerce_app/controllers/recommended_product_controller.dart';
 import 'package:e_commerce_app/models/products_model.dart';
+import 'package:e_commerce_app/pages/food/popular_food_detail.dart';
 import 'package:e_commerce_app/utils/app_constants.dart';
 import 'package:e_commerce_app/utils/color.dart';
 import 'package:e_commerce_app/utils/dimensions.dart';
@@ -53,12 +54,17 @@ void dispose(){
             height: Dimensions.pageView,
             // color: Colors.orange,
 
-            child: PageView.builder(
-                itemCount: popularProducts.popularProductList.length,
-                controller: pageController,
-                itemBuilder: (context, position) {
-                  return _buildPageItem(position, popularProducts.popularProductList[position]);
-                }),
+            child: GestureDetector(
+              onTap: (){
+                Get.to(PopularFoodDetail());
+              },
+              child: PageView.builder(
+                  itemCount: popularProducts.popularProductList.length,
+                  controller: pageController,
+                  itemBuilder: (context, position) {
+                    return _buildPageItem(position, popularProducts.popularProductList[position]);
+                  }),
+            ),
           ):CircularProgressIndicator(
             color: AppColors.mainColor,
           );
