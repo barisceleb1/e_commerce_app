@@ -8,8 +8,8 @@ class Product {
   Product({required totalSize, required typeId, required offset, required products}){
 this._totalSize=totalSize;
 this._typeId=typeId;
-this._offset= offset;
-this._products= products;
+this._offset=offset;
+this._products=products;
 
   }
 
@@ -20,7 +20,7 @@ this._products= products;
     if (json['products'] != null) {
       _products = <ProductModel>[];
       json['products'].forEach((v) {
-        _products!.add(new ProductModel.fromJson(v));
+        _products!.add(ProductModel.fromJson(v));
       });
     }
   }

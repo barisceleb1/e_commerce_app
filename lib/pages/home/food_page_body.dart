@@ -1,4 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:e_commerce_app/controllers/popular_product_controller.dart';
+import 'package:e_commerce_app/models/products_model.dart';
+import 'package:e_commerce_app/utils/app_constants.dart';
 import 'package:e_commerce_app/utils/color.dart';
 import 'package:e_commerce_app/utils/dimensions.dart';
 import 'package:e_commerce_app/widgets/app_column.dart';
@@ -6,6 +9,7 @@ import 'package:e_commerce_app/widgets/big_text.dart';
 import 'package:e_commerce_app/widgets/icon_and_text_widget.dart';
 import 'package:e_commerce_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FoodPageBody extends StatefulWidget {
  FoodPageBody({Key? key}) : super(key: key);
@@ -42,34 +46,37 @@ void dispose(){
     return Column(
       children: [
         //slider section
-        Container(
-          color: Colors.green,
-      height: Dimensions.pageView,
-      // color: Colors.orange,
+        GetBuilder<PopularProductController>(builder: (popularProducts){
+          return Container(
+            //     color: Colors.green,
+            height: Dimensions.pageView,
+            // color: Colors.orange,
 
-      child: PageView.builder(itemCount: 5,
-        controller: pageController,
-        itemBuilder:(context,position){
-          return _buildPageItem(position);
-        },
-
-      ),
-    ),
+            child: PageView.builder(
+                itemCount: popularProducts.popularProductList.length,
+                controller: pageController,
+                itemBuilder: (context, position) {
+                  return _buildPageItem(position, popularProducts.popularProductList[position]);
+                }),
+          );
+        }),
         //dots
-    new DotsIndicator(
-    dotsCount: 5,
-    position: _currPageValue,
-    decorator: DotsDecorator(
-      activeColor: AppColors.mainColor,
-    size: const Size.square(9.0),
-    activeSize: const Size(18.0, 9.0),
-    activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radius5)),
-    ),
-    ),
+   GetBuilder<PopularProductController> (builder: (popularProducts){
+     return DotsIndicator(
+       dotsCount: popularProducts.popularProductList.isEmpty?1:popularProducts.popularProductList.length,
+       position: _currPageValue,
+       decorator: DotsDecorator(
+         activeColor: AppColors.mainColor,
+         size: const Size.square(9.0),
+         activeSize: const Size(18.0, 9.0),
+         activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radius5)),
+       ),
+     );
+   },),
       //Popular text,
     SizedBox(height: Dimensions.height30,),
         Container(
-          color: Colors.yellow,
+      //    color: Colors.yellow,
           margin: EdgeInsets.only(left: Dimensions.width30),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -102,7 +109,7 @@ void dispose(){
               itemCount: 10,
               itemBuilder: (context, index){
                 return Container(
-                  color: Colors.orange,
+            //      color: Colors.orange,
                   margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20, bottom: Dimensions.height10),
                   child: Row(
                     children: [
@@ -157,8 +164,8 @@ void dispose(){
   ],
     );
   }
-
-  Widget _buildPageItem(int index) {
+//ProductModel popularProduct
+  Widget _buildPageItem(int index,ProductModel popularProduct) {
   Matrix4 matrix= new Matrix4.identity();
   if(index== _currPageValue.floor()){
     var currScale= 1-(_currPageValue-index)*(1-_scaleFactor);
@@ -188,7 +195,7 @@ void dispose(){
           height: Dimensions.pageViewContainer,
           margin: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage("assets/hamburger.png"),
+            image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+"/uploads/"+popularProduct.img!),
                 fit: BoxFit.cover),
 
             borderRadius: BorderRadius.circular(Dimensions.radius30),
@@ -211,7 +218,7 @@ void dispose(){
             ),
               child: Container(
                 padding: EdgeInsets.only(top: Dimensions.height10, left: Dimensions.width15, right: Dimensions.width15),
-                child: AppColumn(text: "Veal")
+                child: AppColumn(text: popularProduct.name!)
               ),
             ),
             ),
