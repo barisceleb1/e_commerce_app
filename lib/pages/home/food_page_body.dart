@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_commerce_app/controllers/popular_product_controller.dart';
+import 'package:e_commerce_app/controllers/recommended_product_controller.dart';
 import 'package:e_commerce_app/models/products_model.dart';
 import 'package:e_commerce_app/utils/app_constants.dart';
 import 'package:e_commerce_app/utils/color.dart';
@@ -59,7 +60,7 @@ void dispose(){
                   return _buildPageItem(position, popularProducts.popularProductList[position]);
                 }),
           ):CircularProgressIndicator(
-            color: Colors.grey,
+            color: AppColors.mainColor,
           );
         }),
         //dots
@@ -104,64 +105,66 @@ void dispose(){
         //list of food and images
 
 
+GetBuilder<RecommendedProductController> (builder: (recommendedProduct){
+  return  recommendedProduct.isLoaded ? ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: recommendedProduct.recommendedProductList.length,
+      itemBuilder: (context, index){
+        return Container(
+          //      color: Colors.orange,
+          margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20, bottom: Dimensions.height10),
+          child: Row(
+            children: [
+              //image section
+              Container(
+                height: Dimensions.listViewImgSize,
+                width: Dimensions.listViewImgSize,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    color: Colors.white,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommendedProduct.recommendedProductList[index].img!),
+                    )
+                ),
+              ),
+              // text container
+              Expanded(
+                child: Container(
+                  height: Dimensions.listViewTextContSize,
 
-           ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: 10,
-              itemBuilder: (context, index){
-                return Container(
-            //      color: Colors.orange,
-                  margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20, bottom: Dimensions.height10),
-                  child: Row(
-                    children: [
-                      //image section
-                      Container(
-                        height: Dimensions.listViewImgSize,
-                        width: Dimensions.listViewImgSize,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(Dimensions.radius20),
-                            color: Colors.white,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage("assets/hamburger.png"),
-                            )
-                        ),
-                      ),
-                      // text container
-                      Expanded(
-                        child: Container(
-                          height: Dimensions.listViewTextContSize,
-
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(Dimensions.radius20),
-                              bottomRight: Radius.circular(Dimensions.radius20),
-                            ),
-                            color: Colors.white,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(left:Dimensions.width10, right: Dimensions.width10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                BigText(text: "Medium boiled meat dish"),
-                                SizedBox(height: Dimensions.height10,),
-                                SmallText(text: "A type of food unique to Turkey"),
-                                SizedBox(height: Dimensions.height10,),
-
-                              ],
-                            ),
-                          ),
-                        ),
-                      )
-
-                    ],
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(Dimensions.radius20),
+                      bottomRight: Radius.circular(Dimensions.radius20),
+                    ),
+                    color: Colors.white,
                   ),
-                );
+                  child: Padding(
+                    padding: EdgeInsets.only(left:Dimensions.width10, right: Dimensions.width10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        BigText(text: recommendedProduct.recommendedProductList[index].name!),
+                        SizedBox(height: Dimensions.height10,),
+                        SmallText(text: "A type of food unique to Turkey"),
+                        SizedBox(height: Dimensions.height10,),
 
-              }),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+
+            ],
+          ),
+        );
+
+      }): CircularProgressIndicator(color: AppColors.mainColor,);
+},)
+
 
   ],
     );
@@ -197,7 +200,7 @@ void dispose(){
           height: Dimensions.pageViewContainer,
           margin: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
           decoration: BoxDecoration(
-            image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+"/uploads/"+popularProduct.img!),
+            image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+popularProduct.img!),
                 fit: BoxFit.cover),
 
             borderRadius: BorderRadius.circular(Dimensions.radius30),
