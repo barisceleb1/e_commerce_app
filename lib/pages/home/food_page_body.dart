@@ -47,7 +47,7 @@ void dispose(){
       children: [
         //slider section
         GetBuilder<PopularProductController>(builder: (popularProducts){
-          return Container(
+          return popularProducts.isLoaded?Container(
             //     color: Colors.green,
             height: Dimensions.pageView,
             // color: Colors.orange,
@@ -58,6 +58,8 @@ void dispose(){
                 itemBuilder: (context, position) {
                   return _buildPageItem(position, popularProducts.popularProductList[position]);
                 }),
+          ):CircularProgressIndicator(
+            color: Colors.grey,
           );
         }),
         //dots
@@ -81,7 +83,7 @@ void dispose(){
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Container(child: BigText(text: "Populer")),
+              Container(child: BigText(text: "Recommended")),
               SizedBox(width: Dimensions.width10,),
               Container(
 
