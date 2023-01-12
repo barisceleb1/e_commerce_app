@@ -3,6 +3,7 @@ import 'package:e_commerce_app/controllers/popular_product_controller.dart';
 import 'package:e_commerce_app/controllers/recommended_product_controller.dart';
 import 'package:e_commerce_app/models/products_model.dart';
 import 'package:e_commerce_app/pages/food/popular_food_detail.dart';
+import 'package:e_commerce_app/route/route_helper.dart';
 import 'package:e_commerce_app/utils/app_constants.dart';
 import 'package:e_commerce_app/utils/color.dart';
 import 'package:e_commerce_app/utils/dimensions.dart';
@@ -56,7 +57,7 @@ void dispose(){
 
             child: GestureDetector(
               onTap: (){
-                Get.to(PopularFoodDetail());
+               Get.toNamed(RouteHelper.getPopularFood());
               },
               child: PageView.builder(
                   itemCount: popularProducts.popularProductList.length,
@@ -117,54 +118,59 @@ GetBuilder<RecommendedProductController> (builder: (recommendedProduct){
       shrinkWrap: true,
       itemCount: recommendedProduct.recommendedProductList.length,
       itemBuilder: (context, index){
-        return Container(
-          //      color: Colors.orange,
-          margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20, bottom: Dimensions.height10),
-          child: Row(
-            children: [
-              //image section
-              Container(
-                height: Dimensions.listViewImgSize,
-                width: Dimensions.listViewImgSize,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Dimensions.radius20),
-                    color: Colors.white,
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommendedProduct.recommendedProductList[index].img!),
-                    )
-                ),
-              ),
-              // text container
-              Expanded(
-                child: Container(
-                  height: Dimensions.listViewTextContSize,
-
+        return GestureDetector(
+          onTap: (){
+            Get.toNamed(RouteHelper.getRecommendedFood());
+          },
+          child: Container(
+            //      color: Colors.orange,
+            margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20, bottom: Dimensions.height10),
+            child: Row(
+              children: [
+                //image section
+                Container(
+                  height: Dimensions.listViewImgSize,
+                  width: Dimensions.listViewImgSize,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(Dimensions.radius20),
-                      bottomRight: Radius.circular(Dimensions.radius20),
-                    ),
-                    color: Colors.white,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(left:Dimensions.width10, right: Dimensions.width10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        BigText(text: recommendedProduct.recommendedProductList[index].name!),
-                        SizedBox(height: Dimensions.height10,),
-                        SmallText(text: "A type of food unique to Turkey"),
-                        SizedBox(height: Dimensions.height10,),
-
-                      ],
-                    ),
+                      borderRadius: BorderRadius.circular(Dimensions.radius20),
+                      color: Colors.white,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommendedProduct.recommendedProductList[index].img!),
+                      )
                   ),
                 ),
-              )
+                // text container
+                Expanded(
+                  child: Container(
+                    height: Dimensions.listViewTextContSize,
 
-            ],
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(Dimensions.radius20),
+                        bottomRight: Radius.circular(Dimensions.radius20),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(left:Dimensions.width10, right: Dimensions.width10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          BigText(text: recommendedProduct.recommendedProductList[index].name!),
+                          SizedBox(height: Dimensions.height10,),
+                          SmallText(text: "A type of food unique to Turkey"),
+                          SizedBox(height: Dimensions.height10,),
+
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+
+              ],
+            ),
           ),
         );
 

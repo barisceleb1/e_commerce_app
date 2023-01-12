@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/controllers/recommended_product_controller.dart';
 import 'package:e_commerce_app/pages/home/main_food_page.dart';
+import 'package:e_commerce_app/utils/app_constants.dart';
 import 'package:e_commerce_app/utils/color.dart';
 import 'package:e_commerce_app/utils/dimensions.dart';
 import 'package:e_commerce_app/widgets/app_column.dart';
@@ -20,19 +22,25 @@ class PopularFoodDetail extends StatelessWidget {
       body: Stack(
         children: [
           //background image
-          Positioned(
-            left: 0,
+          GetBuilder<RecommendedProductController> (builder: (recommendProduct){
+           return Positioned(
+              left: 0,
               right: 0,
-            child: Container(
-              width: double.infinity,
-              height: Dimensions.popularFoodImgSize,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image:AssetImage("assets/cooked_meat.png"),
-                   fit: BoxFit.cover)
+              child: Container(
+                width: double.infinity,
+                height: Dimensions.popularFoodImgSize,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image:NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommendProduct.recommendedProductList[1].img!),
+                        fit: BoxFit.cover)
+                ),
               ),
-            ),
-          ),
+
+            );
+
+          },),
+
+
           //icon widgets
           Positioned(
             top: Dimensions.height30,

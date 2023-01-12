@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
 
       home: MainFoodPage(),
       initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
     );
   }
 }
