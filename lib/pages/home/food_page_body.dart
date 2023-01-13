@@ -55,17 +55,12 @@ void dispose(){
             height: Dimensions.pageView,
             // color: Colors.orange,
 
-            child: GestureDetector(
-              onTap: (){
-               Get.toNamed(RouteHelper.getPopularFood());
-              },
-              child: PageView.builder(
-                  itemCount: popularProducts.popularProductList.length,
-                  controller: pageController,
-                  itemBuilder: (context, position) {
-                    return _buildPageItem(position, popularProducts.popularProductList[position]);
-                  }),
-            ),
+            child: PageView.builder(
+                itemCount: popularProducts.popularProductList.length,
+                controller: pageController,
+                itemBuilder: (context, position) {
+                  return _buildPageItem(position, popularProducts.popularProductList[position]);
+                }),
           ):CircularProgressIndicator(
             color: AppColors.mainColor,
           );
@@ -208,15 +203,21 @@ GetBuilder<RecommendedProductController> (builder: (recommendedProduct){
   return Transform(
     transform: matrix,
     child: Stack(
-        children:[Container(
-          height: Dimensions.pageViewContainer,
-          margin: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
-          decoration: BoxDecoration(
-            image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+popularProduct.img!),
-                fit: BoxFit.cover),
+        children:[GestureDetector(
+          onTap: (){
+            Get.toNamed(RouteHelper.getPopularFood(index));
+          },
 
-            borderRadius: BorderRadius.circular(Dimensions.radius30),
-           // color: index.isEven?Color(0xFF00BCD4):Colors.orange,
+          child: Container(
+            height: Dimensions.pageViewContainer,
+            margin: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
+            decoration: BoxDecoration(
+              image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+popularProduct.img!),
+                  fit: BoxFit.cover),
+
+              borderRadius: BorderRadius.circular(Dimensions.radius30),
+             // color: index.isEven?Color(0xFF00BCD4):Colors.orange,
+            ),
           ),
         ),
           Align(
