@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/controllers/recommended_product_controller.dart';
 import 'package:e_commerce_app/route/route_helper.dart';
+import 'package:e_commerce_app/utils/app_constants.dart';
 import 'package:e_commerce_app/utils/color.dart';
 import 'package:e_commerce_app/utils/dimensions.dart';
 import 'package:e_commerce_app/widgets/app_icon.dart';
@@ -8,11 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
+  final int pageId;
+  const RecommendedFoodDetail({Key? key,required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print("Şu an ki telefon boyutu:"+MediaQuery.of(context).size.height.toString());
+    var product = Get.find<RecommendedProductController>().recommendedProductList[pageId];
+   // print("Şu an ki telefon boyutu:"+MediaQuery.of(context).size.height.toString());
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -37,7 +41,7 @@ class RecommendedFoodDetail extends StatelessWidget {
               child: Container(
                // margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20),
 
-              child: Center(child: BigText(text:"Sliver",size: Dimensions.font30,)),
+              child: Center(child: BigText(text:product.name!,size: Dimensions.font30,)),
               width: double.maxFinite,
                 padding: EdgeInsets.only(top: Dimensions.width5, bottom:Dimensions.width10),
                 decoration: BoxDecoration(borderRadius: BorderRadius.only(
@@ -50,7 +54,7 @@ class RecommendedFoodDetail extends StatelessWidget {
             backgroundColor: Colors.red.shade900,
             expandedHeight: Dimensions.expandedHeight,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset("assets/cooked_meat.png",
+              background: Image.network(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+product.img!,
                 width: double.maxFinite,
               fit: BoxFit.cover,),
 
@@ -59,8 +63,9 @@ class RecommendedFoodDetail extends StatelessWidget {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                Container(child: ExpandableTextWidget(text: "These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare."
-                ),
+                Container(
+                  child:ExpandableTextWidget(text: product.description!,)
+                  ,
                  margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20),
                 ),
               ],
@@ -83,7 +88,7 @@ class RecommendedFoodDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppIcon(icon: Icons.remove,backgroundColor: AppColors.mainColor,iconSize: Dimensions.iconSize20,),
-                BigText(text: "\$12.88 "+" X "+" 0 ", color: AppColors.signColor,size: Dimensions.font25,),
+                BigText(text: "\$${product.price} X 0 ", color: AppColors.signColor,size: Dimensions.font25,),
                 AppIcon(icon: Icons.add,backgroundColor: AppColors.mainColor,iconSize: Dimensions.iconSize20,),
               ],
             ),

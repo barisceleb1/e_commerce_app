@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/controllers/popular_product_controller.dart';
 import 'package:e_commerce_app/controllers/recommended_product_controller.dart';
 import 'package:e_commerce_app/pages/home/main_food_page.dart';
 import 'package:e_commerce_app/utils/app_constants.dart';
@@ -13,11 +14,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({Key? key}) : super(key: key);
+  int pageId;
+  PopularFoodDetail({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print("Şu an ki telefon boyutu:"+MediaQuery.of(context).size.height.toString());
+    var product= Get.find<PopularProductController>().popularProductList[pageId];
+    print("page is id "+pageId.toString());
+    print("product name is"+ product.name.toString());
+    //print("Şu an ki telefon boyutu:"+MediaQuery.of(context).size.height.toString());
     return Scaffold(
       body: Stack(
         children: [
@@ -31,7 +36,7 @@ class PopularFoodDetail extends StatelessWidget {
                 height: Dimensions.popularFoodImgSize,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image:NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommendProduct.recommendedProductList[1].img!),
+                        image:NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOAD_URL+product.img!),
                         fit: BoxFit.cover)
                 ),
               ),
@@ -87,13 +92,13 @@ decoration: BoxDecoration(
              child:Column(
                crossAxisAlignment: CrossAxisAlignment.start,
                children: [
-                 AppColumn(text: 'Veal',),
+                 AppColumn(text: product.name!,),
                  SizedBox(height: Dimensions.height20,),
                  BigText(text: "Introduce"),
                  SizedBox(height: Dimensions.height20,),
                  Expanded(
                    child: SingleChildScrollView(
-                     child: ExpandableTextWidget(text: "These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.These are short, famous texts in English from classic sources like the Bible or Shakespeare.",
+                     child: ExpandableTextWidget(text: product.description!,
 
                           ),
                    ),
@@ -148,7 +153,7 @@ decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color:AppColors.mainColor,
               ),
-              child: BigText(text: "8\$ Add to Card"),
+              child: BigText(text: "${product.price!}\$ | Add to Card"),
             )
 
 

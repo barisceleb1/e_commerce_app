@@ -115,7 +115,7 @@ GetBuilder<RecommendedProductController> (builder: (recommendedProduct){
       itemBuilder: (context, index){
         return GestureDetector(
           onTap: (){
-            Get.toNamed(RouteHelper.getRecommendedFood());
+            Get.toNamed(RouteHelper.getRecommendedFood(index));
           },
           child: Container(
             //      color: Colors.orange,
