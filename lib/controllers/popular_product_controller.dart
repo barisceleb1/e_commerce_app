@@ -12,8 +12,14 @@ List<dynamic> get popularProductList => _popularProductList;
 bool _isLoaded = false;
 bool get isLoaded => _isLoaded;
 
+int _quantity=0;
+int get quantity => _quantity;
+
 Future<void> getPopularProductList()async{
 Response response = await popularProductRepo.getPopularProductList();
+
+
+
 
 if(response.statusCode == 200){
   print("got products");
@@ -27,4 +33,16 @@ if(response.statusCode == 200){
 }
 
 }
+
+void setQuantity(bool isIncrement){
+  if(isIncrement){
+
+    _quantity=_quantity+1;
+    print("Tiklandi ${_quantity}");
+  }else{
+    _quantity= _quantity-1;
+  }
+  update();
+}
+
 }
