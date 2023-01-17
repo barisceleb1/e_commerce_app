@@ -20,6 +20,7 @@ class PopularFoodDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var product= Get.find<PopularProductController>().popularProductList[pageId];
+    Get.find<PopularProductController>().initProduct();
     print("page is id "+pageId.toString());
     print("product name is"+ product.name.toString());
     //print("Şu an ki telefon boyutu:"+MediaQuery.of(context).size.height.toString());

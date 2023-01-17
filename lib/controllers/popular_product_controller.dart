@@ -1,5 +1,9 @@
+import 'dart:ui';
+
 import 'package:e_commerce_app/data/repository/populer_product_repo.dart';
 import 'package:e_commerce_app/models/products_model.dart';
+import 'package:e_commerce_app/utils/app_constants.dart';
+import 'package:e_commerce_app/utils/color.dart';
 import 'package:get/get.dart';
 
 class PopularProductController extends GetxController{
@@ -36,13 +40,28 @@ if(response.statusCode == 200){
 
 void setQuantity(bool isIncrement){
   if(isIncrement){
-
-    _quantity=_quantity+1;
+    _quantity=checkQuantity(_quantity+1);
     print("Tiklandi ${_quantity}");
   }else{
-    _quantity= _quantity-1;
+    _quantity= checkQuantity(_quantity-1);
   }
   update();
 }
 
+int checkQuantity(int quantity){
+  if(quantity <0){
+    Get.snackbar("Product count", "You can't reduce more",duration: Duration(seconds: 1),backgroundColor:AppColors.tealColor );
+    return 0;
+  }else if(quantity>20){
+    Get.snackbar("Product count", "You can't add more",duration: Duration(seconds: 1));
+    return 20;
+  }else {
+    return quantity;
+  }
+  }
+
+  void initProduct(){
+  _quantity=0;
+  }
 }
+
