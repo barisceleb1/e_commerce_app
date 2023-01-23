@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/controllers/cart_controller.dart';
 import 'package:e_commerce_app/controllers/popular_product_controller.dart';
 import 'package:e_commerce_app/controllers/recommended_product_controller.dart';
 import 'package:e_commerce_app/pages/home/main_food_page.dart';
@@ -20,7 +21,7 @@ class PopularFoodDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var product= Get.find<PopularProductController>().popularProductList[pageId];
-    Get.find<PopularProductController>().initProduct();
+    Get.find<PopularProductController>().initProduct(Get.find<CartController>());
     print("page is id "+pageId.toString());
     print("product name is"+ product.name.toString());
     //print("Şu an ki telefon boyutu:"+MediaQuery.of(context).size.height.toString());
@@ -163,8 +164,10 @@ decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
                   color:AppColors.mainColor,
                 ),
-                child: BigText(text: "${product.price!}\$ | Add to Card"),
-              )
+               child: GestureDetector(onTap: (){
+        popularProduct.addItem(product);
+        },child: BigText(text: "${product.price!}\$ | Add to Card"))),
+
 
 
             ],

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:e_commerce_app/controllers/cart_controller.dart';
 import 'package:e_commerce_app/data/repository/populer_product_repo.dart';
 import 'package:e_commerce_app/models/products_model.dart';
 import 'package:e_commerce_app/utils/app_constants.dart';
@@ -12,6 +13,7 @@ PopularProductController({required this.popularProductRepo});
 
 List<dynamic> _popularProductList= [];
 List<dynamic> get popularProductList => _popularProductList;
+late CartController _cart;
 
 bool _isLoaded = false;
 bool get isLoaded => _isLoaded;
@@ -62,9 +64,17 @@ int checkQuantity(int quantity){
   }
   }
 
-  void initProduct(){
+  void initProduct(CartController cart){
   _quantity=0;
   _inCartItems=0;
+  _cart = cart;
   }
+
+  void addItem(ProductModel product){
+_cart.addItem(product, _quantity);
+
+
+  }
+
 }
 
