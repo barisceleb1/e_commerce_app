@@ -71,7 +71,17 @@ int checkQuantity(int quantity){
   }
 
   void addItem(ProductModel product){
-_cart.addItem(product, _quantity);
+  if(_quantity>0){
+    _cart.addItem(product, _quantity);
+    _quantity=0;
+    _cart.items.forEach((key,value){
+print("The id is"+value.id.toString()+"The quantity is"+value.quantity.toString());
+    });
+  }else{
+    Get.snackbar("Product count", "You should at least add an item in the cart!",duration: Duration(seconds: 1));
+
+  }
+
 
 
   }
