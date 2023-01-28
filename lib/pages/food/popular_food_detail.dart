@@ -21,7 +21,7 @@ class PopularFoodDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var product= Get.find<PopularProductController>().popularProductList[pageId];
-    Get.find<PopularProductController>().initProduct(Get.find<CartController>());
+    Get.find<PopularProductController>().initProduct(product,Get.find<CartController>());
     print("page is id "+pageId.toString());
     print("product name is"+ product.name.toString());
     //print("Şu an ki telefon boyutu:"+MediaQuery.of(context).size.height.toString());
@@ -147,7 +147,7 @@ decoration: BoxDecoration(
                     },
                         child: Icon(Icons.remove, color: AppColors.signColor,)),
                     SizedBox(width: Dimensions.width10/2,),
-                    BigText(text: popularProduct.quantity.toString()),
+                    BigText(text: popularProduct.inCartItems.toString()),
                     SizedBox(width: Dimensions.width10/2,),
                     GestureDetector(
         onTap: (){

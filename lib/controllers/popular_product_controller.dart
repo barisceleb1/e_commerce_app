@@ -53,10 +53,10 @@ void setQuantity(bool isIncrement){
 }
 
 int checkQuantity(int quantity){
-  if(quantity <0){
+  if((_inCartItems+quantity) <0){
     Get.snackbar("Product count", "You can't reduce more",duration: Duration(seconds: 1),backgroundColor:AppColors.tealColor );
     return 0;
-  }else if(quantity>20){
+  }else if((_inCartItems+quantity)>20){
     Get.snackbar("Product count", "You can't add more",duration: Duration(seconds: 1));
     return 20;
   }else {
@@ -64,16 +64,26 @@ int checkQuantity(int quantity){
   }
   }
 
-  void initProduct(CartController cart){
+  void initProduct(ProductModel product, CartController cart){
   _quantity=0;
   _inCartItems=0;
   _cart = cart;
+  var exist= false;
+  exist= _cart.existInCart(product);
+  print("exist or not "+exist.toString());
+
+  if(exist){
+    _inCartItems=_cart.getQuantity(product);
+  }
+  print("the quantity in the cart is"+_inCartItems.toString());
   }
 
   void addItem(ProductModel product){
   if(_quantity>0){
     _cart.addItem(product, _quantity);
     _quantity=0;
+    _inCartItems=_cart.getQuantity(product);
+
     _cart.items.forEach((key,value){
 print("The id is"+value.id.toString()+"The quantity is"+value.quantity.toString());
     });
