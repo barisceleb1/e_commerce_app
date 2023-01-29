@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:e_commerce_app/controllers/cart_controller.dart';
 import 'package:e_commerce_app/data/repository/populer_product_repo.dart';
+import 'package:e_commerce_app/models/cart_model.dart';
 import 'package:e_commerce_app/models/products_model.dart';
 import 'package:e_commerce_app/utils/app_constants.dart';
 import 'package:e_commerce_app/utils/color.dart';
@@ -99,9 +100,10 @@ update();
 
   int get totalItems{
   return _cart.totalItems;
-
-
   }
+List<CartModel> get getItems{
+return _cart.getItems;
 
+}
 }
 
