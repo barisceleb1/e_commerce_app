@@ -179,16 +179,19 @@ decoration: BoxDecoration(
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(left: Dimensions.height20),
-                padding: EdgeInsets.all(Dimensions.height15),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radius20),
-                  color:AppColors.mainColor,
-                ),
-               child: GestureDetector(onTap: (){
-        popularProduct.addItem(product);
-        },child: BigText(text: "${product.price!}\$ | Add to Card"))),
+              GestureDetector(
+                onTap: (){
+                  popularProduct.addItem(product);
+                },
+                child: Container(
+                  margin: EdgeInsets.only(left: Dimensions.height20),
+                  padding: EdgeInsets.all(Dimensions.height15),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    color:AppColors.mainColor,
+                  ),
+                 child: BigText(text: "${product.price!}\$ | Add to Card")),
+              ),
 
 
 

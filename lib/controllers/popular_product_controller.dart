@@ -53,11 +53,16 @@ void setQuantity(bool isIncrement){
   update();
 }
 
-int checkQuantity(int quantity){
+int checkQuantity(int quantity) {
   if((_inCartItems+quantity) <0){
     Get.snackbar("Product count", "You can't reduce more",duration: Duration(seconds: 1),backgroundColor:AppColors.tealColor );
     return 0;
-  }else if((_inCartItems+quantity)>20){
+  }
+  if(_inCartItems>0){
+    _quantity = _inCartItems;
+    return quantity;
+  }
+  else if((_inCartItems+quantity)>20){
     Get.snackbar("Product count", "You can't add more",duration: Duration(seconds: 1),
     backgroundColor: AppColors.tealColor);
     return 20;
