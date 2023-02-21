@@ -83,7 +83,8 @@ int getQuantity(ProductModel product){
 int get totalItems{
 var totalQuantity=0;
 _items.forEach((key, value) {
-  totalQuantity+=totalQuantity+value.quantity!;
+  totalQuantity += value.quantity!;
+ // totalQuantity =totalQuantity+value.quantity!;
 });
 
 return totalQuantity;

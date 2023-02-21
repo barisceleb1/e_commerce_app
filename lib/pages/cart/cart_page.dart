@@ -1,4 +1,6 @@
 import 'package:e_commerce_app/controllers/cart_controller.dart';
+import 'package:e_commerce_app/pages/home/main_food_page.dart';
+import 'package:e_commerce_app/route/route_helper.dart';
 import 'package:e_commerce_app/utils/app_constants.dart';
 import 'package:e_commerce_app/utils/color.dart';
 import 'package:e_commerce_app/utils/dimensions.dart';
@@ -29,10 +31,15 @@ class CartPage extends StatelessWidget {
         backgroundColor: AppColors.mainColor,
         iconSize: Dimensions.iconSize25,),
         SizedBox(width: Dimensions.width20*5,),
-        AppIcon(icon: Icons.home_outlined,
-          iconColor: Colors.white,
-          backgroundColor: AppColors.mainColor,
-          iconSize: Dimensions.iconSize25,),
+        GestureDetector(
+          onTap: (){
+            Get.toNamed(RouteHelper.getInitial());
+          },
+          child: AppIcon(icon: Icons.home_outlined,
+            iconColor: Colors.white,
+            backgroundColor: AppColors.mainColor,
+            iconSize: Dimensions.iconSize25,),
+        ),
 
         AppIcon(icon: Icons.shopping_cart,
           iconColor: Colors.white,
@@ -80,7 +87,7 @@ class CartPage extends StatelessWidget {
                                       SmallText(text: "spicy"),
                                       Row(
                                         children: [
-                                          BigText(text: cartController.getItems[index]!.price.toString(),color: Colors.redAccent,),
+                                          BigText(text: cartController.getItems[index].price.toString(),color: Colors.redAccent,),
                                           Container(
                                             margin: EdgeInsets.only(left: Dimensions.height10),
                                             padding: EdgeInsets.all(Dimensions.height10),
