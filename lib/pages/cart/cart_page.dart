@@ -57,9 +57,9 @@ class CartPage extends StatelessWidget {
                // color: Colors.red,
                 child: MediaQuery.removePadding(context: context,removeTop: true,
                   child: GetBuilder<CartController>(builder:(cartController){
-
+                    var _cartList = cartController.getItems;
                     return ListView.builder(
-                        itemCount: cartController.getItems.length,
+                        itemCount: _cartList.length,
                         itemBuilder: (_, index){
                           return Container(
                             margin: EdgeInsets.only(top:Dimensions.height20),
@@ -107,15 +107,18 @@ class CartPage extends StatelessWidget {
                                             child: Row(
                                               children: [
                                                 GestureDetector(onTap: (){
+                                                  cartController.addItem(_cartList[index].product!, -1 );
                                                   //popularProduct.setQuantity(false);
 
                                                 },
                                                     child: Icon(Icons.remove, color: AppColors.signColor,)),
                                                 SizedBox(width: Dimensions.width10/2,),
-                                                BigText(text: "asdasd"),//popularProduct.inCartItems.toString()),
+                                                BigText(text: _cartList[index].quantity.toString()),//popularProduct.inCartItems.toString()),
                                                 SizedBox(width: Dimensions.width10/2,),
                                                 GestureDetector(
                                                     onTap: (){
+                                                      cartController.addItem(_cartList[index].product!, 1 );
+                                                      print("being tapped");
                                                       //popularProduct.setQuantity(true);
                                                     }
                                                     ,child: Icon(Icons.add, color: AppColors.signColor,)),

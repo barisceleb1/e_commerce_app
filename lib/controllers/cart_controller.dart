@@ -23,6 +23,7 @@ void addItem(ProductModel product, int quantity){
         quantity:value.quantity!+quantity,
         isExist:true,
         time:DateTime.now().toString(),
+        product: product,
 
       );
     });
@@ -42,6 +43,7 @@ if(quantity>0){
       quantity:quantity,
       isExist:true,
       time:DateTime.now().toString(),
+      product: product,
 
     );
 }
@@ -53,7 +55,7 @@ if(quantity>0){
   backgroundColor: AppColors.mainColor);
   }
 }
-
+update();
 
 
 
